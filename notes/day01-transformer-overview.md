@@ -6,6 +6,20 @@
 文本 -> Tokenize -> Embedding -> Attention -> Logits -> Sampling -> 输出
 ```
 
+## LLM 工作流图
+
+```mermaid
+flowchart TD
+    A["输入文本<br/>我要在45天内掌握AI Agent"] --> B["Tokenizer<br/>把文本切成 token"]
+    B --> C["Token IDs<br/>例如: 116540, 2178, 2548..."]
+    C --> D["Embedding<br/>把 token id 变成向量"]
+    D --> E["Transformer Blocks<br/>Attention + FFN + Residual + LayerNorm"]
+    E --> F["Logits<br/>预测下一个 token 的分数"]
+    F --> G["Sampling<br/>temperature / top-p / top-k"]
+    G --> H["输出 token"]
+    H --> I["解码为文本"]
+```
+
 ## 1. 文本不是直接进入模型
 
 LLM 看到的不是“字”或“单词”，而是一串 token id。
